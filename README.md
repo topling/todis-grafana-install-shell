@@ -3,6 +3,17 @@
 - 操作系统支持centos 8 和阿里云 ecs 系统，其他系统未测试。
 
 # 1、安装
+
+#### 下载
+download.tar.gz 是安装过程用到的 rpm 包和 grafana 修改内容。
+```
+git clone https://github.com/topling/todis-grafana-install-shell.git
+cd todis-grafana-install-shell
+wget "https://github.com/topling/todis-grafana-install-shell/releases/download/download_file/download.tar.gz"
+tar xf download.tar.gz
+```
+
+#### 安装
 cd install; 执行`sh install.sh`即可完成安装。
 
 配置内容在 config.sh，如下示例：
