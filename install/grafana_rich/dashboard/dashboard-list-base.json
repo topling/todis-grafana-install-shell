@@ -1,0 +1,66 @@
+{
+"dashboard":{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 20,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 4,
+      "options": {
+	 "content": "<p><a href='https://topling.cn' target='_black'>Topling Inc.</a>当前是 grafana 展示运行状态的主页，还可修改端口为 8000 查看 web 页面展示的运行状态信息。</p><p>DB Properties 展示存储引擎的 DB::Properties 相关内容，不熟悉当作一般属性信息即可。\n    <br />statistics 展示存储引擎运行状态的统计信息，用于分析运行状态。\n    <br />todis-to-prometheus 指的是 todis 输出 prometheus 可识别数据格式。\n    <br />histogram 展示统计占比信息，概念参考 prometheus 的 <a href='https://prometheus.io/docs/concepts/metric_types/#histogram' target='_black'>histogram</a>。<br />\n    <br />展示 histogram 的 dashboard 页面右上角都有一个链接,  可以在两个 dashboard 之间跳转，不同点在于信息展示的浮动窗口内容，效果试一次就明白了。详细信息参见<a href='https://blog.topling.cn/posts/%E9%92%88%E5%AF%B9%20Grafana%20%E7%9B%91%E6%8E%A7%E6%95%88%E6%9E%9C%E7%9A%84%E4%B8%80%E4%B8%AA%E6%94%B9%E8%BF%9B/'  target='_black'>针对 Grafana 监控效果的一个改进。</a><br />\n    <br />每个 dashboard 对应一个 dashbosrd 页面，点击相应内容完成跳转。\n</p>\n<table>\n    <thead>\n        <tr>\n            <th colspan=\"2\">指标类别</th>\n            <th>dashboard</th>\n            <th>描述</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td rowspan=\"4\" colspan=\"2\" style=\"text-align: center\">engine<br />DB Properties </td>\n            <td><a href='properties-all-url'>properties all</a></td>\n            <td>存储引擎的内部属性相关信息，包括一些状态信息</td>\n        </tr>\n        <tr>\n            <td><a href='properties-cfstat-url'>properties cfstat</a></td>\n            <td>cfstat 内容，引擎中 Column Family 相关属性信息</td>\n        </tr>\n        <tr>\n            <td><a href='properties-level-url'>properties level</a></td>\n            <td>level 相关内容，指定层相关的属性信息</td>\n        </tr>\n        <tr>\n            <td><a href='properties-common-url'>properties common</a></td>\n            <td>cfstat、level 之外内容</td>\n        </tr>\n        <tr>\n            <td rowspan=\"5\" colspan=\"1\" style=\"text-align: center\">engine<br />statistics</td>\n            <td rowspan=\"3\" colspan=\"1\" style=\"text-align: center\">histogram</td>\n            <td><a href='engine-histogram-url'>engine histogram</a></td>\n            <td>histogram 内容</td>\n        </tr>\n        <tr>\n            <td><a href='engine-histogram-compaction-flush-url'>engine compaction</a></td>\n            <td>histogram 内容中 compaction 和 flush 相关部分</td>\n        </tr>\n        <tr>\n            <td><a href='engine-histogram-common-url'>engine common</a></td>\n            <td>histogram 内容中 compaction 和 flush 之外部分</td>\n        </tr>\n        <tr>\n            <td rowspan=\"2\" colspan=\"1\" style=\"text-align: center\">ticker</td>\n            <td><a href='ticker-url'>ticker simple</a></td>\n            <td>tickers 内容是引擎层的一些实时统计信息，简单展示</td>\n        </tr>\n        <tr>\n            <td><a href='ticker-aggregate-url'>ticker aggregate</a></td>\n            <td>tickers 内容，添加了自定义的合并展示</td>\n        </tr>\n        <tr>\n            <td rowspan=\"2\" colspan=\"2\" style=\"text-align: center\">todis</td>\n            <td><a href='length-histogram-url'>length histogram</a></td>\n            <td>todis 中写入数据长度统计信息</td>\n        </tr>\n        <tr>\n            <td><a href='time-histogram-url'>time histogram</a></td>\n            <td>todis 中命令耗时统计信息</td>\n        </tr>\n    </tbody>\n</table>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.2.4",
+      "title": "dashboard list",
+      "type": "text"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 32,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "dashboard list",
+  "uid": "vZDzojN7k",
+  "version": 13
+},
+"folderId": 18
+}

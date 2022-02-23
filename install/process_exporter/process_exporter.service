@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus exporter for processors metrics, written in Go with pluggable metric collectors.
+Documentation=https://github.com/ncabatoff/process-exporter
+After=network.target
+[Service]
+Type=simple
+User=prometheus
+WorkingDirectory=/usr/local/process-exporter/process-exporter-0.4.0.linux-amd64
+ExecStart=/usr/local/process-exporter/process-exporter-0.4.0.linux-amd64/process-exporter -config.path=/usr/local/process-exporter/process-exporter-0.4.0.linux-amd64/process-exporter-ncabatoff.yml
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

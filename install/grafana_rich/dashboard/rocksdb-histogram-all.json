@@ -1,0 +1,593 @@
+{
+"dashboard":{
+  "__inputs": [],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "8.1.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1631962298153,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "engine histogram"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+	    "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "P50",
+                  "P90",
+                  "P99",
+                  "P999",
+                  "AVG"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "interval": "15s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "detailed3"
+        }
+      },
+      "repeat": "bucket_id",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.5, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "interval": "",
+          "legendFormat": "P50",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.90, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P90",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.99, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P99",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.999, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P999",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.9999, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P9999",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "delta(${bucket_id}_sum{job=\"stat-$data_type\"}[1m])/delta(${bucket_id}_count{job=\"stat-$data_type\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "AVG",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "le{{le}}",
+          "refId": "G"
+        }
+      ],
+      "title": "$bucket_id",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": ["engine histogram"],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "strings",
+          "value": "strings"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "data_type",
+        "multi": false,
+        "name": "data_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "strings",
+            "value": "strings"
+          },
+          {
+            "selected": false,
+            "text": "hashes",
+            "value": "hashes"
+          },
+          {
+            "selected": false,
+            "text": "lists",
+            "value": "lists"
+          },
+          {
+            "selected": false,
+            "text": "sets",
+            "value": "sets"
+          },
+          {
+            "selected": false,
+            "text": "zsets",
+            "value": "zsets"
+          }
+        ],
+        "query": "strings,hashes,lists,sets,zsets,",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "engine:bytes:per:read",
+            "engine:bytes:per:write",
+            "engine:compaction:outfile:sync:micros",
+            "engine:compaction:times:micros",
+            "engine:db:flush:micros",
+            "engine:db:get:micros",
+            "engine:db:write:micros",
+            "engine:dcompaction:input:zip:bytes",
+            "engine:dcompaction:output:file:raw:size",
+            "engine:dcompaction:output:file:zip:size",
+            "engine:manifest:file:sync:micros",
+	        "engine:memtab:construct:nanos",
+            "engine:memtab:write:kv:nanos",
+            "engine:mutex:wait:nanos",
+            "engine:table:open:io:micros",
+            "engine:table:sync:micros",
+            "engine:numfiles:in:singlecompaction",
+            "engine:sst:read:micros",
+	    "engine:read:zbs:record:micros"
+          ],
+          "value": [
+            "engine:bytes:per:read",
+            "engine:bytes:per:write",
+            "engine:compaction:outfile:sync:micros",
+            "engine:compaction:times:micros",
+            "engine:db:flush:micros",
+            "engine:db:get:micros",
+            "engine:db:write:micros",
+            "engine:dcompaction:input:zip:bytes",
+            "engine:dcompaction:output:file:raw:size",
+            "engine:dcompaction:output:file:zip:size",
+            "engine:manifest:file:sync:micros",
+	        "engine:memtab:construct:nanos",
+            "engine:memtab:write:kv:nanos",
+            "engine:mutex:wait:nanos",
+            "engine:table:open:io:micros",
+            "engine:table:sync:micros",
+            "engine:numfiles:in:singlecompaction",
+            "engine:sst:read:micros",
+	    "engine:read:zbs:record:micros"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "bucket_id",
+        "multi": true,
+        "name": "bucket_id",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "engine:bytes:per:read",
+            "value": "engine:bytes:per:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:bytes:per:write",
+            "value": "engine:bytes:per:write"
+          },
+          {
+            "selected": false,
+            "text": "engine:bytes:per:multiget",
+            "value": "engine:bytes:per:multiget"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:outfile:sync:micros",
+            "value": "engine:compaction:outfile:sync:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:times:cpu_micros",
+            "value": "engine:compaction:times:cpu_micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:times:micros",
+            "value": "engine:compaction:times:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:subcompaction:setup:times:micros",
+            "value": "engine:subcompaction:setup:times:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:cond:wait:nanos",
+            "value": "engine:cond:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:hard:rate:limit:delay:count",
+            "value": "engine:hard:rate:limit:delay:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:l0:slowdown:count",
+            "value": "engine:l0:slowdown:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:compaction:count",
+            "value": "engine:memtable:compaction:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:mutex:wait:nanos",
+            "value": "engine:mutex:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:files:stall:count",
+            "value": "engine:num:files:stall:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:soft:rate:limit:delay:count",
+            "value": "engine:soft:rate:limit:delay:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:flush:micros",
+            "value": "engine:db:flush:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:get:micros",
+            "value": "engine:db:get:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:multiget:micros",
+            "value": "engine:db:multiget:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:seek:micros",
+            "value": "engine:db:seek:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:write:micros",
+            "value": "engine:db:write:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:write:stall",
+            "value": "engine:db:write:stall"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:input:raw:bytes",
+            "value": "engine:dcompaction:input:raw:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:input:zip:bytes",
+            "value": "engine:dcompaction:input:zip:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:output:file:raw:size",
+            "value": "engine:dcompaction:output:file:raw:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:output:file:zip:size",
+            "value": "engine:dcompaction:output:file:zip:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:retry:count",
+            "value": "engine:error:handler:autoresume:retry:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:input:raw:bytes",
+            "value": "engine:lcompaction:input:raw:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:input:zip:bytes",
+            "value": "engine:lcompaction:input:zip:bytes"
+          },
+          {
+            "selected": false,
+            "text":  "engine:lcompaction:output:file:raw:size",
+            "value": "engine:lcompaction:output:file:raw:size"
+          },
+          {
+            "selected": false,
+            "text":  "engine:lcompaction:output:file:zip:size",
+            "value": "engine:lcompaction:output:file:zip:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:manifest:file:sync:micros",
+            "value": "engine:manifest:file:sync:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:memtab:construct:nanos",
+            "value": "engine:memtab:construct:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtab:write:kv:nanos",
+            "value": "engine:memtab:write:kv:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:table:open:io:micros",
+            "value": "engine:table:open:io:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:table:sync:micros",
+            "value": "engine:table:sync:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:wal:file:sync:micros",
+            "value": "engine:wal:file:sync:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:write:wal:nanos",
+            "value": "engine:write:wal:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:numfiles:in:singlecompaction",
+            "value": "engine:numfiles:in:singlecompaction"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:sst:read:per:level",
+            "value": "engine:num:sst:read:per:level"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:subcompactions:scheduled",
+            "value": "engine:num:subcompactions:scheduled"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:per:multiget",
+            "value": "engine:number:per:multiget"
+          },
+          {
+            "selected": false,
+            "text": "engine:sst:batch:size",
+            "value": "engine:sst:batch:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:sst:read:micros",
+            "value": "engine:sst:read:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:switch:wal:nanos",
+            "value": "engine:switch:wal:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:read:zbs:record:micros",
+            "value": "engine:read:zbs:record:micros"
+          }
+        ],
+        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:cond:wait:nanos,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:memtable:compaction:count,engine:mutex:wait:nanos,engine:num:files:stall:count,engine:soft:rate:limit:delay:count,engine:db:flush:micros,engine:db:get:micros,engine:db:multiget:micros,engine:db:seek:micros,engine:db:write:micros,engine:db:write:stall,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:error:handler:autoresume:retry:count,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:manifest:file:sync:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:numfiles:in:singlecompaction,engine:num:sst:read:per:level,engine:num:subcompactions:scheduled,engine:number:per:multiget,engine:sst:batch:size,engine:sst:read:micros,engine:switch:wal:nanos,engine:read:zbs:record:micros,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "engine histogram",
+  "uid": "UoBiorink",
+  "version": 7
+}
+}

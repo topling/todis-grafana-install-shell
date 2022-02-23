@@ -1,0 +1,711 @@
+{
+"dashboard":
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1634784832266,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "interval": "15s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "repeat": "cfstats_actual",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:L0:$cfstats_actual\"}",
+          "interval": "",
+          "legendFormat": "L0",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:L1:$cfstats_actual\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L1",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:L2:$cfstats_actual\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:L3:$cfstats_actual\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:L4:$cfstats_actual\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L4",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"compaction:Sum:$cfstats_actual\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Sum",
+          "refId": "F"
+        }
+      ],
+      "title": "cfstat actual $cfstats_actual",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 18
+      },
+      "id": 30,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "repeat": "cfstats_rate",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:L0:$cfstats_rate\"}[1m])",
+          "interval": "",
+          "legendFormat": "L0",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:L1:$cfstats_rate\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L1",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:L2:$cfstats_rate\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:L3:$cfstats_rate\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:L4:$cfstats_rate\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "L4",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(engine:cfstats{job=$data_type, flag=\"compaction:Sum:$cfstats_rate\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Sum",
+          "refId": "F"
+        }
+      ],
+      "title": "cfstat rate $cfstats_rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 45
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "repeat": "io_stalls",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "engine:cfstats{job=$data_type, flag=\"io_stalls:$io_stalls\"}",
+          "interval": "",
+          "legendFormat": "{{flag}}",
+          "refId": "A"
+        }
+      ],
+      "title": "cfstat io_stalls $io_stalls",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+ {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "\"props-strings\"",
+          "value": "\"props-strings\""
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "data_type",
+        "multi": false,
+        "name": "data_type",
+        "options": [
+          {
+            "selected": false,
+            "text": "\"props-hashes-data_cf\"",
+            "value": "\"props-hashes-data_cf\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-hashes-default\"",
+            "value": "\"props-hashes-default\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-lists-data_cf\"",
+            "value": "\"props-lists-data_cf\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-lists-default\"",
+            "value": "\"props-lists-default\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-sets-default\"",
+            "value": "\"props-sets-default\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-sets-member_cf\"",
+            "value": "\"props-sets-member_cf\""
+          },
+          {
+            "selected": true,
+            "text": "\"props-strings\"",
+            "value": "\"props-strings\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-zsets-data_cf\"",
+            "value": "\"props-zsets-data_cf\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-zsets-default\"",
+            "value": "\"props-zsets-default\""
+          },
+          {
+            "selected": false,
+            "text": "\"props-zsets-score_cf\"",
+            "value": "\"props-zsets-score_cf\""
+          },
+          {
+            "selected": false,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "\"props-hashes-data_cf\",\"props-hashes-default\",\"props-lists-data_cf\",\"props-lists-default\",\"props-sets-default\",\"props-sets-member_cf\",\"props-strings\",\"props-zsets-data_cf\",\"props-zsets-default\",\"props-zsets-score_cf\", ",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "cfstats_actual",
+        "multi": true,
+        "name": "cfstats_actual",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "AvgSec",
+            "value": "AvgSec"
+          },
+          {
+            "selected": false,
+            "text": "CompactedFiles",
+            "value": "CompactedFiles"
+          },
+          {
+            "selected": false,
+            "text": "NumFiles",
+            "value": "NumFiles"
+          },
+          {
+            "selected": false,
+            "text": "ReadMBps",
+            "value": "ReadMBps"
+          },
+          {
+            "selected": false,
+            "text": "Score",
+            "value": "Score"
+          },
+          {
+            "selected": false,
+            "text": "SizeBytes",
+            "value": "SizeBytes"
+          },
+          {
+            "selected": false,
+            "text": "WriteAmp",
+            "value": "WriteAmp"
+          },
+          {
+            "selected": false,
+            "text": "WriteMBps",
+            "value": "WriteMBps"
+          }
+        ],
+        "query": "AvgSec,CompactedFiles,NumFiles,ReadMBps,Score,SizeBytes,WriteAmp,WriteMBps,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "cfstats_rate",
+        "multi": true,
+        "name": "cfstats_rate",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "CompCount",
+            "value": "CompCount"
+          },
+          {
+            "selected": false,
+            "text": "CompMergeCPU",
+            "value": "CompMergeCPU"
+          },
+          {
+            "selected": false,
+            "text": "CompSec",
+            "value": "CompSec"
+          },
+          {
+            "selected": false,
+            "text": "KeyDrop",
+            "value": "KeyDrop"
+          },
+          {
+            "selected": false,
+            "text": "KeyIn",
+            "value": "KeyIn"
+          },
+          {
+            "selected": false,
+            "text": "MovedGB",
+            "value": "MovedGB"
+          },
+          {
+            "selected": false,
+            "text": "ReadGB",
+            "value": "ReadGB"
+          },
+          {
+            "selected": false,
+            "text": "RnGB",
+            "value": "RnGB"
+          },
+          {
+            "selected": false,
+            "text": "Rnp1GB",
+            "value": "Rnp1GB"
+          },
+          {
+            "selected": false,
+            "text": "WnewGB",
+            "value": "WnewGB"
+          },
+          {
+            "selected": false,
+            "text": "WriteGB",
+            "value": "WriteGB"
+          }
+        ],
+        "query": "CompCount,CompMergeCPU,CompSec,KeyDrop,KeyIn,MovedGB,ReadGB,RnGB,Rnp1GB,WnewGB,WriteGB",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "io_stalls",
+        "multi": true,
+        "name": "io_stalls",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "level0_numfiles",
+            "value": "level0_numfiles"
+          },
+          {
+            "selected": false,
+            "text": "level0_numfiles_with_compaction",
+            "value": "level0_numfiles_with_compaction"
+          },
+          {
+            "selected": false,
+            "text": "level0_slowdown",
+            "value": "level0_slowdown"
+          },
+          {
+            "selected": false,
+            "text": "level0_slowdown_with_compaction",
+            "value": "level0_slowdown_with_compaction"
+          },
+          {
+            "selected": false,
+            "text": "memtable_compaction",
+            "value": "memtable_compaction"
+          },
+          {
+            "selected": false,
+            "text": "memtable_slowdown",
+            "value": "memtable_slowdown"
+          },
+          {
+            "selected": false,
+            "text": "slowdown_for_pending_compaction_bytes",
+            "value": "slowdown_for_pending_compaction_bytes"
+          },
+          {
+            "selected": false,
+            "text": "stop_for_pending_compaction_bytes",
+            "value": "stop_for_pending_compaction_bytes"
+          },
+          {
+            "selected": false,
+            "text": "total_slowdown",
+            "value": "total_slowdown"
+          },
+          {
+            "selected": false,
+            "text": "total_stop",
+            "value": "total_stop"
+          }
+        ],
+        "query": "level0_numfiles,level0_numfiles_with_compaction,level0_slowdown,level0_slowdown_with_compaction,memtable_compaction,memtable_slowdown,slowdown_for_pending_compaction_bytes,stop_for_pending_compaction_bytes,total_slowdown,total_stop,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "properties cfstat",
+  "uid": "IsGBo9Ini",
+  "version": 11
+}
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=grafana
+Documentation=http://docs.grafana.org
+After=network.target
+
+[Service]
+Type=simple
+User=grafana
+ExecStart=/usr/local/grafana/grafana-8.2.4/bin/grafana-server -homepath=/usr/local/grafana/grafana-8.2.4
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,751 @@
+{
+"dashboard":
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1636628923322,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "ticker"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "interval": "15s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "metric_name",
+      "repeatDirection": "h",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:430",
+          "alias": "window_avg",
+          "transform": "constant"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate($metric_name{job=\"stat-$data_type\"}[1m])",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "rate",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate($metric_name{job=\"stat-$data_type\"}[$__range])",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "window_avg",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$metric_name",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:501",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:502",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": ["ticker"],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "engine:number:keys:written",
+            "engine:no:file:opens",
+            "engine:stall:micros",
+            "engine:files:deleted:immediately",
+            "engine:bytes:written",
+            "engine:wal:bytes",
+            "engine:flush:write:bytes",
+            "engine:write:self",
+            "engine:write:other",
+            "engine:write:wal",
+            "engine:compact:read:bytes",
+            "engine:compact:write:bytes",
+            "engine:lcompact:write:bytes:raw",
+            "engine:dcompact:write:bytes:raw",
+			"engine:remote:compact:read:bytes",
+			"engine:remote:compact:write:bytes",
+            "engine:superversion_acquires",
+            "engine:superversion_cleanups",
+            "engine:superversion_releases",
+            "engine:error:handler:bg:errro:count"
+          ],
+          "value": [
+            "engine:number:keys:written",
+            "engine:no:file:opens",
+            "engine:stall:micros",
+            "engine:files:deleted:immediately",
+            "engine:bytes:written",
+            "engine:wal:bytes",
+            "engine:flush:write:bytes",
+            "engine:write:self",
+            "engine:write:other",
+            "engine:write:wal",
+            "engine:compact:read:bytes",
+            "engine:compact:write:bytes",
+            "engine:lcompact:write:bytes:raw",
+            "engine:dcompact:write:bytes:raw",
+			"engine:remote:compact:read:bytes",
+			"engine:remote:compact:write:bytes",
+            "engine:superversion_acquires",
+            "engine:superversion_cleanups",
+            "engine:superversion_releases",
+            "engine:error:handler:bg:errro:count"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "metric_name",
+        "multi": true,
+        "name": "metric_name",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:useful",
+            "value": "engine:bloom:filter:useful"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:full:positive",
+            "value": "engine:bloom:filter:full:positive"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:full:true:positive",
+            "value": "engine:bloom:filter:full:true:positive"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:micros",
+            "value": "engine:bloom:filter:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:hit",
+            "value": "engine:memtable:hit"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:miss",
+            "value": "engine:memtable:miss"
+          },
+          {
+            "selected": false,
+            "text": "engine:l0:hit",
+            "value": "engine:l0:hit"
+          },
+          {
+            "selected": false,
+            "text": "engine:l1:hit",
+            "value": "engine:l1:hit"
+          },
+          {
+            "selected": false,
+            "text": "engine:l2andup:hit",
+            "value": "engine:l2andup:hit"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:key:drop:new",
+            "value": "engine:compaction:key:drop:new"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:key:drop:obsolete",
+            "value": "engine:compaction:key:drop:obsolete"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:key:drop:range_del",
+            "value": "engine:compaction:key:drop:range_del"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:key:drop:user",
+            "value": "engine:compaction:key:drop:user"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:range_del:drop:obsolete",
+            "value": "engine:compaction:range_del:drop:obsolete"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:optimized:del:drop:obsolete",
+            "value": "engine:compaction:optimized:del:drop:obsolete"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:cancelled",
+            "value": "engine:compaction:cancelled"
+          },
+          {
+            "selected": true,
+            "text": "engine:number:keys:written",
+            "value": "engine:number:keys:written"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:keys:read",
+            "value": "engine:number:keys:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:keys:updated",
+            "value": "engine:number:keys:updated"
+          },
+          {
+            "selected": false,
+            "text": "engine:bytes:read",
+            "value": "engine:bytes:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:seek",
+            "value": "engine:number:db:seek"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:next",
+            "value": "engine:number:db:next"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:prev",
+            "value": "engine:number:db:prev"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:seek:found",
+            "value": "engine:number:db:seek:found"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:next:found",
+            "value": "engine:number:db:next:found"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:db:prev:found",
+            "value": "engine:number:db:prev:found"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:iter:bytes:read",
+            "value": "engine:db:iter:bytes:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:no:file:closes",
+            "value": "engine:no:file:closes"
+          },
+          {
+            "selected": true,
+            "text": "engine:no:file:opens",
+            "value": "engine:no:file:opens"
+          },
+          {
+            "selected": false,
+            "text": "engine:no:file:errors",
+            "value": "engine:no:file:errors"
+          },
+          {
+            "selected": false,
+            "text": "engine:l0:slowdown:micros",
+            "value": "engine:l0:slowdown:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:compaction:micros",
+            "value": "engine:memtable:compaction:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:l0:num:files:stall:micros",
+            "value": "engine:l0:num:files:stall:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:stall:micros",
+            "value": "engine:stall:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:cond:wait:nanos",
+            "value": "engine:db:cond:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:mutex:wait:nanos",
+            "value": "engine:db:mutex:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:rate:limit:delay:millis",
+            "value": "engine:rate:limit:delay:millis"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:iterators",
+            "value": "engine:num:iterators"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:multiget:get",
+            "value": "engine:number:multiget:get"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:multiget:keys:read",
+            "value": "engine:number:multiget:keys:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:multiget:bytes:read",
+            "value": "engine:number:multiget:bytes:read"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:deletes:filtered",
+            "value": "engine:number:deletes:filtered"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:merge:failures",
+            "value": "engine:number:merge:failures"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:prefix:checked",
+            "value": "engine:bloom:filter:prefix:checked"
+          },
+          {
+            "selected": false,
+            "text": "engine:bloom:filter:prefix:useful",
+            "value": "engine:bloom:filter:prefix:useful"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:reseeks:iteration",
+            "value": "engine:number:reseeks:iteration"
+          },
+          {
+            "selected": false,
+            "text": "engine:getupdatessince:calls",
+            "value": "engine:getupdatessince:calls"
+          },
+          {
+            "selected": false,
+            "text": "engine:wal:synced",
+            "value": "engine:wal:synced"
+          },
+          {
+            "selected": false,
+            "text": "engine:write:timeout",
+            "value": "engine:write:timeout"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:read:marked:bytes",
+            "value": "engine:compact:read:marked:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:read:periodic:bytes",
+            "value": "engine:compact:read:periodic:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:read:ttl:bytes",
+            "value": "engine:compact:read:ttl:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:write:marked:bytes",
+            "value": "engine:compact:write:marked:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:write:periodic:bytes",
+            "value": "engine:compact:write:periodic:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:compact:write:ttl:bytes",
+            "value": "engine:compact:write:ttl:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:direct:load:table:properties",
+            "value": "engine:number:direct:load:table:properties"
+          },
+          {
+            "selected": false,
+            "text": "engine:merge:operation:time:nanos",
+            "value": "engine:merge:operation:time:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:filter:operation:time:nanos",
+            "value": "engine:filter:operation:time:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:read:amp:estimate:useful:bytes",
+            "value": "engine:read:amp:estimate:useful:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:read:amp:total:read:bytes",
+            "value": "engine:read:amp:total:read:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:rate_limiter:drains",
+            "value": "engine:number:rate_limiter:drains"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:iter:skip",
+            "value": "engine:number:iter:skip"
+          },
+          {
+            "selected": false,
+            "text": "engine:number:multiget:keys:found",
+            "value": "engine:number:multiget:keys:found"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:iterator:created",
+            "value": "engine:num:iterator:created"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:iterator:deleted",
+            "value": "engine:num:iterator:deleted"
+          },
+          {
+            "selected": false,
+            "text": "engine:files:marked:trash",
+            "value": "engine:files:marked:trash"
+          },
+          {
+            "selected": true,
+            "text": "engine:files:deleted:immediately",
+            "value": "engine:files:deleted:immediately"
+          },
+          {
+            "selected": true,
+            "text": "engine:error:handler:bg:errro:count",
+            "value": "engine:error:handler:bg:errro:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:bg:io:errro:count",
+            "value": "engine:error:handler:bg:io:errro:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:bg:retryable:io:errro:count",
+            "value": "engine:error:handler:bg:retryable:io:errro:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:count",
+            "value": "engine:error:handler:autoresume:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:retry:total:count",
+            "value": "engine:error:handler:autoresume:retry:total:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:success:count",
+            "value": "engine:error:handler:autoresume:success:count"
+          },
+          {
+            "selected": true,
+            "text": "engine:bytes:written",
+            "value": "engine:bytes:written"
+          },
+          {
+            "selected": true,
+            "text": "engine:wal:bytes",
+            "value": "engine:wal:bytes"
+          },
+          {
+            "selected": true,
+            "text": "engine:flush:write:bytes",
+            "value": "engine:flush:write:bytes"
+          },
+          {
+            "selected": true,
+            "text": "engine:write:self",
+            "value": "engine:write:self"
+          },
+          {
+            "selected": true,
+            "text": "engine:write:other",
+            "value": "engine:write:other"
+          },
+          {
+            "selected": true,
+            "text": "engine:write:wal",
+            "value": "engine:write:wal"
+          },
+          {
+            "selected": true,
+            "text": "engine:compact:read:bytes",
+            "value": "engine:compact:read:bytes"
+          },
+          {
+            "selected": true,
+            "text": "engine:compact:write:bytes",
+            "value": "engine:compact:write:bytes"
+          },
+
+          {
+            "selected": true,
+            "text": "engine:lcompact:write:bytes:raw",
+            "value": "engine:lcompact:write:bytes:raw"
+          },
+          {
+            "selected": true,
+            "text": "engine:dcompact:write:bytes:raw",
+            "value": "engine:dcompact:write:bytes:raw"
+          },
+          {
+            "selected": true,
+            "text": "engine:remote:compact:read:bytes",
+            "value": "engine:remote:compact:read:bytes"
+          },
+          {
+            "selected": true,
+            "text": "engine:remote:compact:write:bytes",
+            "value": "engine:remote:compact:write:bytes"
+          },
+          {
+            "selected": true,
+            "text": "engine:superversion_acquires",
+            "value": "engine:superversion_acquires"
+          },
+          {
+            "selected": true,
+            "text": "engine:superversion_cleanups",
+            "value": "engine:superversion_cleanups"
+          },
+          {
+            "selected": true,
+            "text": "engine:superversion_releases",
+            "value": "engine:superversion_releases"
+          }
+        ],
+        "query": "engine:bloom:filter:useful,engine:bloom:filter:full:positive,engine:bloom:filter:full:true:positive,engine:bloom:filter:micros,engine:memtable:hit,engine:memtable:miss,engine:l0:hit,engine:l1:hit,engine:l2andup:hit,engine:compaction:key:drop:new,engine:compaction:key:drop:obsolete,engine:compaction:key:drop:range_del,engine:compaction:key:drop:user,engine:compaction:range_del:drop:obsolete,engine:compaction:optimized:del:drop:obsolete,engine:compaction:cancelled,engine:number:keys:written,engine:number:keys:read,engine:number:keys:updated,engine:bytes:read,engine:number:db:seek,engine:number:db:next,engine:number:db:prev,engine:number:db:seek:found,engine:number:db:next:found,engine:number:db:prev:found,engine:db:iter:bytes:read,engine:no:file:closes,engine:no:file:opens,engine:no:file:errors,engine:l0:slowdown:micros,engine:memtable:compaction:micros,engine:l0:num:files:stall:micros,engine:stall:micros,engine:db:cond:wait:nanos,engine:db:mutex:wait:nanos,engine:rate:limit:delay:millis,engine:num:iterators,engine:number:multiget:get,engine:number:multiget:keys:read,engine:number:multiget:bytes:read,engine:number:deletes:filtered,engine:number:merge:failures,engine:bloom:filter:prefix:checked,engine:bloom:filter:prefix:useful,engine:number:reseeks:iteration,engine:getupdatessince:calls,engine:wal:synced,engine:write:timeout,engine:compact:read:marked:bytes,engine:compact:read:periodic:bytes,engine:compact:read:ttl:bytes,engine:compact:write:marked:bytes,engine:compact:write:periodic:bytes,engine:compact:write:ttl:bytes,engine:number:direct:load:table:properties,engine:merge:operation:time:nanos,engine:filter:operation:time:nanos,engine:read:amp:estimate:useful:bytes,engine:read:amp:total:read:bytes,engine:number:rate_limiter:drains,engine:number:iter:skip,engine:number:multiget:keys:found,engine:num:iterator:created,engine:num:iterator:deleted,engine:files:marked:trash,engine:files:deleted:immediately,engine:error:handler:bg:errro:count,engine:error:handler:bg:io:errro:count,engine:error:handler:bg:retryable:io:errro:count,engine:error:handler:autoresume:count,engine:error:handler:autoresume:retry:total:count,engine:error:handler:autoresume:success:count,engine:bytes:written,engine:wal:bytes,engine:flush:write:bytes,engine:write:self,engine:write:other,engine:write:wal,engine:compact:read:bytes,engine:compact:write:bytes,engine:lcompact:write:bytes:raw,engine:dcompact:write:bytes:raw,engine:remote:compact:read:bytes,engine:remote:compact:write:bytes,engine:superversion_acquires,engine:superversion_cleanups,engine:superversion_releases,",
+        "queryValue": "error:handler:bg",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "strings",
+          "value": "strings"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "data_type",
+        "multi": false,
+        "name": "data_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "strings",
+            "value": "strings"
+          },
+          {
+            "selected": false,
+            "text": "hashes",
+            "value": "hashes"
+          },
+          {
+            "selected": false,
+            "text": "lists",
+            "value": "lists"
+          },
+          {
+            "selected": false,
+            "text": "sets",
+            "value": "sets"
+          },
+          {
+            "selected": false,
+            "text": "zsets",
+            "value": "zsets"
+          }
+        ],
+        "query": " strings,hashes,lists,sets,zsets,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "ticker simple",
+  "uid": "-y1G0RI0z",
+  "version": 2
+}
+}

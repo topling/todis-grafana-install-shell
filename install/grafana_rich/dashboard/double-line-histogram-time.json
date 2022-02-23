@@ -1,0 +1,869 @@
+{
+"dashboard":
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1635752309838,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "time histogram"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "P50",
+                  "P90",
+                  "P99",
+                  "P999",
+                  "AVG"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "interval": "15s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "detailed2"
+        }
+      },
+      "repeat": "command",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.5, rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])),1)",
+          "interval": "",
+          "legendFormat": "P50",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.9, rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P90",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.99, rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P99",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.999, rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P999",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.9999, rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P9999",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "delta(pika_cost_time_sum{name=\"$command\",step=\"$step\"}[1m])/delta(pika_cost_time_count{name=\"$command\",step=\"$step\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "AVG",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(pika_cost_time_bucket{name=\"$command\",step=\"$step\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "le{{le}}",
+          "refId": "G"
+        }
+      ],
+      "title": "$command $step",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": ["time histogram"],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "get",
+            "mget",
+            "mset",
+            "set"
+          ],
+          "value": [
+            "get",
+            "mget",
+            "mset",
+            "set"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "command",
+        "multi": true,
+        "name": "command",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "append",
+            "value": "append"
+          },
+          {
+            "selected": false,
+            "text": "bitcount",
+            "value": "bitcount"
+          },
+          {
+            "selected": false,
+            "text": "bitop",
+            "value": "bitop"
+          },
+          {
+            "selected": false,
+            "text": "bitpos",
+            "value": "bitpos"
+          },
+          {
+            "selected": false,
+            "text": "command",
+            "value": "command"
+          },
+          {
+            "selected": false,
+            "text": "decr",
+            "value": "decr"
+          },
+          {
+            "selected": false,
+            "text": "decrby",
+            "value": "decrby"
+          },
+          {
+            "selected": false,
+            "text": "del",
+            "value": "del"
+          },
+          {
+            "selected": false,
+            "text": "delvx",
+            "value": "delvx"
+          },
+          {
+            "selected": false,
+            "text": "exists",
+            "value": "exists"
+          },
+          {
+            "selected": false,
+            "text": "expire",
+            "value": "expire"
+          },
+          {
+            "selected": false,
+            "text": "expireat",
+            "value": "expireat"
+          },
+          {
+            "selected": true,
+            "text": "get",
+            "value": "get"
+          },
+          {
+            "selected": false,
+            "text": "getbit",
+            "value": "getbit"
+          },
+          {
+            "selected": false,
+            "text": "getrange",
+            "value": "getrange"
+          },
+          {
+            "selected": false,
+            "text": "getset",
+            "value": "getset"
+          },
+          {
+            "selected": false,
+            "text": "hdel",
+            "value": "hdel"
+          },
+          {
+            "selected": false,
+            "text": "hexists",
+            "value": "hexists"
+          },
+          {
+            "selected": false,
+            "text": "hget",
+            "value": "hget"
+          },
+          {
+            "selected": false,
+            "text": "hgetall",
+            "value": "hgetall"
+          },
+          {
+            "selected": false,
+            "text": "hincrby",
+            "value": "hincrby"
+          },
+          {
+            "selected": false,
+            "text": "hincrbyfloat",
+            "value": "hincrbyfloat"
+          },
+          {
+            "selected": false,
+            "text": "hkeys",
+            "value": "hkeys"
+          },
+          {
+            "selected": false,
+            "text": "hlen",
+            "value": "hlen"
+          },
+          {
+            "selected": false,
+            "text": "hmget",
+            "value": "hmget"
+          },
+          {
+            "selected": false,
+            "text": "hmset",
+            "value": "hmset"
+          },
+          {
+            "selected": false,
+            "text": "hscan",
+            "value": "hscan"
+          },
+          {
+            "selected": false,
+            "text": "hscanx",
+            "value": "hscanx"
+          },
+          {
+            "selected": false,
+            "text": "hset",
+            "value": "hset"
+          },
+          {
+            "selected": false,
+            "text": "hsetnx",
+            "value": "hsetnx"
+          },
+          {
+            "selected": false,
+            "text": "hstrlen",
+            "value": "hstrlen"
+          },
+          {
+            "selected": false,
+            "text": "hvals",
+            "value": "hvals"
+          },
+          {
+            "selected": false,
+            "text": "incr",
+            "value": "incr"
+          },
+          {
+            "selected": false,
+            "text": "incrby",
+            "value": "incrby"
+          },
+          {
+            "selected": false,
+            "text": "incrbyfloat",
+            "value": "incrbyfloat"
+          },
+          {
+            "selected": false,
+            "text": "keys",
+            "value": "keys"
+          },
+          {
+            "selected": false,
+            "text": "lindex",
+            "value": "lindex"
+          },
+          {
+            "selected": false,
+            "text": "linsert",
+            "value": "linsert"
+          },
+          {
+            "selected": false,
+            "text": "llen",
+            "value": "llen"
+          },
+          {
+            "selected": false,
+            "text": "lpop",
+            "value": "lpop"
+          },
+          {
+            "selected": false,
+            "text": "lpush",
+            "value": "lpush"
+          },
+          {
+            "selected": false,
+            "text": "lpushx",
+            "value": "lpushx"
+          },
+          {
+            "selected": false,
+            "text": "lrange",
+            "value": "lrange"
+          },
+          {
+            "selected": false,
+            "text": "lrem",
+            "value": "lrem"
+          },
+          {
+            "selected": false,
+            "text": "lset",
+            "value": "lset"
+          },
+          {
+            "selected": false,
+            "text": "ltrim",
+            "value": "ltrim"
+          },
+          {
+            "selected": true,
+            "text": "mget",
+            "value": "mget"
+          },
+          {
+            "selected": true,
+            "text": "mset",
+            "value": "mset"
+          },
+          {
+            "selected": false,
+            "text": "msetnx",
+            "value": "msetnx"
+          },
+          {
+            "selected": false,
+            "text": "persist",
+            "value": "persist"
+          },
+          {
+            "selected": false,
+            "text": "pexpire",
+            "value": "pexpire"
+          },
+          {
+            "selected": false,
+            "text": "pexpireat",
+            "value": "pexpireat"
+          },
+          {
+            "selected": false,
+            "text": "pkhrscanrange",
+            "value": "pkhrscanrange"
+          },
+          {
+            "selected": false,
+            "text": "pkhscanrange",
+            "value": "pkhscanrange"
+          },
+          {
+            "selected": false,
+            "text": "pkrscanrange",
+            "value": "pkrscanrange"
+          },
+          {
+            "selected": false,
+            "text": "pkscanrange",
+            "value": "pkscanrange"
+          },
+          {
+            "selected": false,
+            "text": "pksetexat",
+            "value": "pksetexat"
+          },
+          {
+            "selected": false,
+            "text": "psetex",
+            "value": "psetex"
+          },
+          {
+            "selected": false,
+            "text": "pttl",
+            "value": "pttl"
+          },
+          {
+            "selected": false,
+            "text": "rpop",
+            "value": "rpop"
+          },
+          {
+            "selected": false,
+            "text": "rpoplpush",
+            "value": "rpoplpush"
+          },
+          {
+            "selected": false,
+            "text": "rpush",
+            "value": "rpush"
+          },
+          {
+            "selected": false,
+            "text": "rpushx",
+            "value": "rpushx"
+          },
+          {
+            "selected": false,
+            "text": "sadd",
+            "value": "sadd"
+          },
+          {
+            "selected": false,
+            "text": "scan",
+            "value": "scan"
+          },
+          {
+            "selected": false,
+            "text": "scanx",
+            "value": "scanx"
+          },
+          {
+            "selected": false,
+            "text": "scard",
+            "value": "scard"
+          },
+          {
+            "selected": false,
+            "text": "sdiff",
+            "value": "sdiff"
+          },
+          {
+            "selected": false,
+            "text": "sdiffstore",
+            "value": "sdiffstore"
+          },
+          {
+            "selected": true,
+            "text": "set",
+            "value": "set"
+          },
+          {
+            "selected": false,
+            "text": "setbit",
+            "value": "setbit"
+          },
+          {
+            "selected": false,
+            "text": "setex",
+            "value": "setex"
+          },
+          {
+            "selected": false,
+            "text": "setnx",
+            "value": "setnx"
+          },
+          {
+            "selected": false,
+            "text": "setrange",
+            "value": "setrange"
+          },
+          {
+            "selected": false,
+            "text": "sinter",
+            "value": "sinter"
+          },
+          {
+            "selected": false,
+            "text": "sinterstore",
+            "value": "sinterstore"
+          },
+          {
+            "selected": false,
+            "text": "sismember",
+            "value": "sismember"
+          },
+          {
+            "selected": false,
+            "text": "smembers",
+            "value": "smembers"
+          },
+          {
+            "selected": false,
+            "text": "smove",
+            "value": "smove"
+          },
+          {
+            "selected": false,
+            "text": "spop",
+            "value": "spop"
+          },
+          {
+            "selected": false,
+            "text": "srandmember",
+            "value": "srandmember"
+          },
+          {
+            "selected": false,
+            "text": "srem",
+            "value": "srem"
+          },
+          {
+            "selected": false,
+            "text": "sscan",
+            "value": "sscan"
+          },
+          {
+            "selected": false,
+            "text": "strlen",
+            "value": "strlen"
+          },
+          {
+            "selected": false,
+            "text": "sunion",
+            "value": "sunion"
+          },
+          {
+            "selected": false,
+            "text": "sunionstore",
+            "value": "sunionstore"
+          },
+          {
+            "selected": false,
+            "text": "ttl",
+            "value": "ttl"
+          },
+          {
+            "selected": false,
+            "text": "type",
+            "value": "type"
+          },
+          {
+            "selected": false,
+            "text": "zadd",
+            "value": "zadd"
+          },
+          {
+            "selected": false,
+            "text": "zcard",
+            "value": "zcard"
+          },
+          {
+            "selected": false,
+            "text": "zcount",
+            "value": "zcount"
+          },
+          {
+            "selected": false,
+            "text": "zincrby",
+            "value": "zincrby"
+          },
+          {
+            "selected": false,
+            "text": "zinterstore",
+            "value": "zinterstore"
+          },
+          {
+            "selected": false,
+            "text": "zlexcount",
+            "value": "zlexcount"
+          },
+          {
+            "selected": false,
+            "text": "zpopmax",
+            "value": "zpopmax"
+          },
+          {
+            "selected": false,
+            "text": "zpopmin",
+            "value": "zpopmin"
+          },
+          {
+            "selected": false,
+            "text": "zrange",
+            "value": "zrange"
+          },
+          {
+            "selected": false,
+            "text": "zrangebylex",
+            "value": "zrangebylex"
+          },
+          {
+            "selected": false,
+            "text": "zrangebyscore",
+            "value": "zrangebyscore"
+          },
+          {
+            "selected": false,
+            "text": "zrank",
+            "value": "zrank"
+          },
+          {
+            "selected": false,
+            "text": "zrem",
+            "value": "zrem"
+          },
+          {
+            "selected": false,
+            "text": "zremrangebylex",
+            "value": "zremrangebylex"
+          },
+          {
+            "selected": false,
+            "text": "zremrangebyrank",
+            "value": "zremrangebyrank"
+          },
+          {
+            "selected": false,
+            "text": "zremrangebyscore",
+            "value": "zremrangebyscore"
+          },
+          {
+            "selected": false,
+            "text": "zrevrange",
+            "value": "zrevrange"
+          },
+          {
+            "selected": false,
+            "text": "zrevrangebylex",
+            "value": "zrevrangebylex"
+          },
+          {
+            "selected": false,
+            "text": "zrevrangebyscore",
+            "value": "zrevrangebyscore"
+          },
+          {
+            "selected": false,
+            "text": "zrevrank",
+            "value": "zrevrank"
+          },
+          {
+            "selected": false,
+            "text": "zscan",
+            "value": "zscan"
+          },
+          {
+            "selected": false,
+            "text": "zscore",
+            "value": "zscore"
+          },
+          {
+            "selected": false,
+            "text": "zunionstore",
+            "value": "zunionstore"
+          }
+        ],
+        "query": "append,bitcount,bitop,bitpos,command,decr,decrby,del,delvx,exists,expire,expireat,get,getbit,getrange,getset,hdel,hexists,hget,hgetall,hincrby,hincrbyfloat,hkeys,hlen,hmget,hmset,hscan,hscanx,hset,hsetnx,hstrlen,hvals,incr,incrby,incrbyfloat,keys,lindex,linsert,llen,lpop,lpush,lpushx,lrange,lrem,lset,ltrim,mget,mset,msetnx,persist,pexpire,pexpireat,pkhrscanrange,pkhscanrange,pkrscanrange,pkscanrange,pksetexat,psetex,pttl,rpop,rpoplpush,rpush,rpushx,sadd,scan,scanx,scard,sdiff,sdiffstore,set,setbit,setex,setnx,setrange,sinter,sinterstore,sismember,smembers,smove,spop,srandmember,srem,sscan,strlen,sunion,sunionstore,ttl,type,zadd,zcard,zcount,zincrby,zinterstore,zlexcount,zpopmax,zpopmin,zrange,zrangebylex,zrangebyscore,zrank,zrem,zremrangebylex,zremrangebyrank,zremrangebyscore,zrevrange,zrevrangebylex,zrevrangebyscore,zrevrank,zscan,zscore,zunionstore,",
+        "queryValue": "set",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "all",
+          "value": "all"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(pika_cost_time_bucket, step)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "step",
+        "multi": false,
+        "name": "step",
+        "options": [],
+        "query": {
+          "query": "label_values(pika_cost_time_bucket, step)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "time histogram double line",
+  "uid": "vTV6tRi7z",
+  "version": 2
+},
+"folderId": 12
+}

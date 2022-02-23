@@ -1,0 +1,177 @@
+# 全局配置
+global:
+  scrape_interval:     15s # 设置抓取间隔，默认为1分钟
+  evaluation_interval: 15s #估算规则的默认周期，每15秒计算一次规则。默认1分钟
+  # scrape_timeout  #默认抓取超时，默认为10s
+
+# Alertmanager相关配置
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# 规则文件列表，使用'evaluation_interval' 参数去抓取
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+#  抓取配置列表
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+        - targets: ['prometheus_ip_port', 'process_exporter_ip_port','localhost:9100']
+
+  - job_name: 'stat-strings'
+    metrics_path: '/statistics/stat-strings'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'stat-lists'
+    metrics_path: '/statistics/stat-lists'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'stat-hashes'
+    metrics_path: '/statistics/stat-hashes'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'stat-sets'
+    metrics_path: '/statistics/stat-sets'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'stat-zsets'
+    metrics_path: '/statistics/stat-zsets'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'topling_zip'
+    metrics_path: '/table_factory/topling_zip'
+    params:
+        metric: ['1']
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-strings'
+    metrics_path: '/props/strings/default'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-lists-default'
+    metrics_path: '/props/lists/default'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-lists-data_cf'
+    metrics_path: '/props/lists/data_cf'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-hashes-default'
+    metrics_path: '/props/hashes/default'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-hashes-data_cf'
+    metrics_path: '/props/hashes/data_cf'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-sets-default'
+    metrics_path: '/props/sets/default'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-sets-member_cf'
+    metrics_path: '/props/sets/member_cf'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-zsets-default'
+    metrics_path: '/props/zsets/default'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-zsets-data_cf'
+    metrics_path: '/props/zsets/data_cf'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'props-zsets-score_cf'
+    metrics_path: '/props/zsets/score_cf'
+    params:
+        metric: ['1']
+        html: ['0']
+        noint: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'db-time-metric'
+    metrics_path: '/AnyPlugin/time_metric'
+    params:
+        html: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+
+  - job_name: 'db-length-metric'
+    metrics_path: '/AnyPlugin/length_metric'
+    params:
+        html: ['0']
+        web: ['0']
+    static_configs:
+        - targets: ['db_ip_port']
+

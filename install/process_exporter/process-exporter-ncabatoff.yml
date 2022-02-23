@@ -1,0 +1,10 @@
+process_names:
+   - name: "{{.Matches}}"
+     cmdline:
+     - 'pika'
+   - name: "{{.Matches}}"
+     cmdline:
+     - 'prometheus'
+   - name: "{{.Matches}}"
+     cmdline:
+     - 'grafana'

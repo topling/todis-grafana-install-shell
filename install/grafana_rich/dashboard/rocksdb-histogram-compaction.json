@@ -1,0 +1,403 @@
+{
+"dashboard":
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1634111036859,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "engine histogram compaction"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+	    "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "P50",
+                  "P90",
+                  "P99",
+                  "P999",
+                  "AVG"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "interval": "15s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "detailed3"
+        }
+      },
+      "repeat": "bucket_id",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.5, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "interval": "",
+          "legendFormat": "P50",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.90, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P90",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.99, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P99",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.999, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P999",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "clamp_min(histogram_quantile(0.9999, rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])),1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P9999",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "delta(${bucket_id}_sum{job=\"stat-$data_type\"}[1m])/delta(${bucket_id}_count{job=\"stat-$data_type\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "AVG",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(${bucket_id}_bucket{job=\"stat-$data_type\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "le{{le}}",
+          "refId": "G"
+        }
+      ],
+      "title": "$bucket_id",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": ["engine histogram compaction"],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "strings",
+          "value": "strings"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "data_type",
+        "multi": false,
+        "name": "data_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "strings",
+            "value": "strings"
+          },
+          {
+            "selected": false,
+            "text": "hashes",
+            "value": "hashes"
+          },
+          {
+            "selected": false,
+            "text": "lists",
+            "value": "lists"
+          },
+          {
+            "selected": false,
+            "text": "sets",
+            "value": "sets"
+          },
+          {
+            "selected": false,
+            "text": "zsets",
+            "value": "zsets"
+          }
+        ],
+        "query": "strings,hashes,lists,sets,zsets,",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "bucket_id",
+        "multi": true,
+        "name": "bucket_id",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:outfile:sync:micros",
+            "value": "engine:compaction:outfile:sync:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:times:cpu_micros",
+            "value": "engine:compaction:times:cpu_micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:compaction:times:micros",
+            "value": "engine:compaction:times:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:subcompaction:setup:times:micros",
+            "value": "engine:subcompaction:setup:times:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:compaction:count",
+            "value": "engine:memtable:compaction:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:flush:micros",
+            "value": "engine:db:flush:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:input:raw:bytes",
+            "value": "engine:dcompaction:input:raw:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:input:zip:bytes",
+            "value": "engine:dcompaction:input:zip:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:output:file:raw:size",
+            "value": "engine:dcompaction:output:file:raw:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:dcompaction:output:file:zip:size",
+            "value": "engine:dcompaction:output:file:zip:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:input:raw:bytes",
+            "value": "engine:lcompaction:input:raw:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:input:zip:bytes",
+            "value": "engine:lcompaction:input:zip:bytes"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:output:file:raw:size",
+            "value": "engine:lcompaction:output:file:raw:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:lcompaction:output:file:zip:size",
+            "value": "engine:lcompaction:output:file:zip:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:numfiles:in:singlecompaction",
+            "value": "engine:numfiles:in:singlecompaction"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:subcompactions:scheduled",
+            "value": "engine:num:subcompactions:scheduled"
+          }
+        ],
+        "query": "engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:memtable:compaction:count,engine:db:flush:micros,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "engine histogram compaction flush",
+  "uid": "hKJezev9k",
+  "version": 1
+}
+}
