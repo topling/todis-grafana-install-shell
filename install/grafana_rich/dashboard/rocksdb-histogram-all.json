@@ -286,44 +286,26 @@
           "text": [
             "engine:bytes:per:read",
             "engine:bytes:per:write",
-            "engine:compaction:outfile:sync:micros",
-            "engine:compaction:times:micros",
-            "engine:db:flush:micros",
+            "engine:bytes:per:multiget",
+            "engine:number:per:multiget",
             "engine:db:get:micros",
             "engine:db:write:micros",
-            "engine:dcompaction:input:zip:bytes",
-            "engine:dcompaction:output:file:raw:size",
-            "engine:dcompaction:output:file:zip:size",
-            "engine:manifest:file:sync:micros",
-	        "engine:memtab:construct:nanos",
-            "engine:memtab:write:kv:nanos",
-            "engine:mutex:wait:nanos",
-            "engine:table:open:io:micros",
-            "engine:table:sync:micros",
-            "engine:numfiles:in:singlecompaction",
-            "engine:sst:read:micros",
-	    "engine:read:zbs:record:micros"
+            "engine:db:write:stall",
+            "engine:db:multiget:micros",
+            "engine:db:flush:micros",
+            "engine:db:seek:micros"
           ],
           "value": [
             "engine:bytes:per:read",
             "engine:bytes:per:write",
-            "engine:compaction:outfile:sync:micros",
-            "engine:compaction:times:micros",
-            "engine:db:flush:micros",
+            "engine:bytes:per:multiget",
+            "engine:number:per:multiget",
             "engine:db:get:micros",
             "engine:db:write:micros",
-            "engine:dcompaction:input:zip:bytes",
-            "engine:dcompaction:output:file:raw:size",
-            "engine:dcompaction:output:file:zip:size",
-            "engine:manifest:file:sync:micros",
-	        "engine:memtab:construct:nanos",
-            "engine:memtab:write:kv:nanos",
-            "engine:mutex:wait:nanos",
-            "engine:table:open:io:micros",
-            "engine:table:sync:micros",
-            "engine:numfiles:in:singlecompaction",
-            "engine:sst:read:micros",
-	    "engine:read:zbs:record:micros"
+            "engine:db:write:stall",
+            "engine:db:multiget:micros",
+            "engine:db:flush:micros",
+            "engine:db:seek:micros"
           ]
         },
         "description": null,
@@ -335,24 +317,59 @@
         "name": "bucket_id",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "All",
             "value": "$__all"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "engine:bytes:per:read",
             "value": "engine:bytes:per:read"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "engine:bytes:per:write",
             "value": "engine:bytes:per:write"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "engine:bytes:per:multiget",
             "value": "engine:bytes:per:multiget"
+          },
+          {
+            "selected": true,
+            "text": "engine:number:per:multiget",
+            "value": "engine:number:per:multiget"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:get:micros",
+            "value": "engine:db:get:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:write:micros",
+            "value": "engine:db:write:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:write:stall",
+            "value": "engine:db:write:stall"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:multiget:micros",
+            "value": "engine:db:multiget:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:flush:micros",
+            "value": "engine:db:flush:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:seek:micros",
+            "value": "engine:db:seek:micros"
           },
           {
             "selected": false,
@@ -376,68 +393,13 @@
           },
           {
             "selected": false,
-            "text": "engine:cond:wait:nanos",
-            "value": "engine:cond:wait:nanos"
+            "text": "engine:numfiles:in:singlecompaction",
+            "value": "engine:numfiles:in:singlecompaction"
           },
           {
             "selected": false,
-            "text": "engine:hard:rate:limit:delay:count",
-            "value": "engine:hard:rate:limit:delay:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:l0:slowdown:count",
-            "value": "engine:l0:slowdown:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:memtable:compaction:count",
-            "value": "engine:memtable:compaction:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:mutex:wait:nanos",
-            "value": "engine:mutex:wait:nanos"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:files:stall:count",
-            "value": "engine:num:files:stall:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:soft:rate:limit:delay:count",
-            "value": "engine:soft:rate:limit:delay:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:flush:micros",
-            "value": "engine:db:flush:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:get:micros",
-            "value": "engine:db:get:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:multiget:micros",
-            "value": "engine:db:multiget:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:seek:micros",
-            "value": "engine:db:seek:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:write:micros",
-            "value": "engine:db:write:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:write:stall",
-            "value": "engine:db:write:stall"
+            "text": "engine:num:subcompactions:scheduled",
+            "value": "engine:num:subcompactions:scheduled"
           },
           {
             "selected": false,
@@ -461,11 +423,6 @@
           },
           {
             "selected": false,
-            "text": "engine:error:handler:autoresume:retry:count",
-            "value": "engine:error:handler:autoresume:retry:count"
-          },
-          {
-            "selected": false,
             "text": "engine:lcompaction:input:raw:bytes",
             "value": "engine:lcompaction:input:raw:bytes"
           },
@@ -476,21 +433,16 @@
           },
           {
             "selected": false,
-            "text":  "engine:lcompaction:output:file:raw:size",
+            "text": "engine:lcompaction:output:file:raw:size",
             "value": "engine:lcompaction:output:file:raw:size"
           },
           {
             "selected": false,
-            "text":  "engine:lcompaction:output:file:zip:size",
+            "text": "engine:lcompaction:output:file:zip:size",
             "value": "engine:lcompaction:output:file:zip:size"
           },
           {
             "selected": false,
-            "text": "engine:manifest:file:sync:micros",
-            "value": "engine:manifest:file:sync:micros"
-          },
-          {
-            "selected": true,
             "text": "engine:memtab:construct:nanos",
             "value": "engine:memtab:construct:nanos"
           },
@@ -521,23 +473,8 @@
           },
           {
             "selected": false,
-            "text": "engine:numfiles:in:singlecompaction",
-            "value": "engine:numfiles:in:singlecompaction"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:sst:read:per:level",
-            "value": "engine:num:sst:read:per:level"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:subcompactions:scheduled",
-            "value": "engine:num:subcompactions:scheduled"
-          },
-          {
-            "selected": false,
-            "text": "engine:number:per:multiget",
-            "value": "engine:number:per:multiget"
+            "text": "engine:switch:wal:nanos",
+            "value": "engine:switch:wal:nanos"
           },
           {
             "selected": false,
@@ -551,16 +488,61 @@
           },
           {
             "selected": false,
-            "text": "engine:switch:wal:nanos",
-            "value": "engine:switch:wal:nanos"
+            "text": "engine:num:sst:read:per:level",
+            "value": "engine:num:sst:read:per:level"
+          },
+          {
+            "selected": false,
+            "text": "engine:cond:wait:nanos",
+            "value": "engine:cond:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:mutex:wait:nanos",
+            "value": "engine:mutex:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:retry:count",
+            "value": "engine:error:handler:autoresume:retry:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:manifest:file:sync:micros",
+            "value": "engine:manifest:file:sync:micros"
           },
           {
             "selected": false,
             "text": "engine:read:zbs:record:micros",
             "value": "engine:read:zbs:record:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:hard:rate:limit:delay:count",
+            "value": "engine:hard:rate:limit:delay:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:l0:slowdown:count",
+            "value": "engine:l0:slowdown:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtable:compaction:count",
+            "value": "engine:memtable:compaction:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:num:files:stall:count",
+            "value": "engine:num:files:stall:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:soft:rate:limit:delay:count",
+            "value": "engine:soft:rate:limit:delay:count"
           }
         ],
-        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:cond:wait:nanos,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:memtable:compaction:count,engine:mutex:wait:nanos,engine:num:files:stall:count,engine:soft:rate:limit:delay:count,engine:db:flush:micros,engine:db:get:micros,engine:db:multiget:micros,engine:db:seek:micros,engine:db:write:micros,engine:db:write:stall,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:error:handler:autoresume:retry:count,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:manifest:file:sync:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:numfiles:in:singlecompaction,engine:num:sst:read:per:level,engine:num:subcompactions:scheduled,engine:number:per:multiget,engine:sst:batch:size,engine:sst:read:micros,engine:switch:wal:nanos,engine:read:zbs:record:micros,",
+        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:number:per:multiget,engine:db:get:micros,engine:db:write:micros,engine:db:write:stall,engine:db:multiget:micros,engine:db:flush:micros,engine:db:seek:micros,engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:switch:wal:nanos,engine:sst:batch:size,engine:sst:read:micros,engine:num:sst:read:per:level,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:read:zbs:record:micros,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:memtable:compaction:count,engine:num:files:stall:count,engine:soft:rate:limit:delay:count,",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
