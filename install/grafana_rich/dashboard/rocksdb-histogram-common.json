@@ -269,28 +269,32 @@
         "current": {
           "selected": true,
           "text": [
+            "engine:bytes:per:multiget",
             "engine:bytes:per:read",
             "engine:bytes:per:write",
             "engine:db:get:micros",
+            "engine:db:multiget:micros",
             "engine:db:write:micros",
-            "engine:manifest:file:sync:micros",
-	    "engine:memtab:construct:nanos",
-        "engine:memtab:write:kv:nanos",
-            "engine:table:open:io:micros",
-            "engine:table:sync:micros",
-            "engine:sst:read:micros"
+            "engine:db:write:stall",
+            "engine:number:per:multiget",
+            "engine:num:sst:read:per:level",
+            "engine:switch:wal:nanos",
+            "engine:wal:file:sync:micros",
+            "engine:write:wal:nanos"
           ],
           "value": [
+            "engine:bytes:per:multiget",
             "engine:bytes:per:read",
             "engine:bytes:per:write",
             "engine:db:get:micros",
+            "engine:db:multiget:micros",
             "engine:db:write:micros",
-            "engine:manifest:file:sync:micros",
-	    "engine:memtab:construct:nanos",
-        "engine:memtab:write:kv:nanos",
-            "engine:table:open:io:micros",
-            "engine:table:sync:micros",
-            "engine:sst:read:micros"
+            "engine:db:write:stall",
+            "engine:number:per:multiget",
+            "engine:num:sst:read:per:level",
+            "engine:switch:wal:nanos",
+            "engine:wal:file:sync:micros",
+            "engine:write:wal:nanos"
           ]
         },
         "description": null,
@@ -302,29 +306,124 @@
         "name": "bucket_id",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "All",
             "value": "$__all"
           },
           {
-            "selected": false,
+            "selected": true,
+            "text": "engine:bytes:per:multiget",
+            "value": "engine:bytes:per:multiget"
+          },
+          {
+            "selected": true,
             "text": "engine:bytes:per:read",
             "value": "engine:bytes:per:read"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "engine:bytes:per:write",
             "value": "engine:bytes:per:write"
           },
           {
+            "selected": true,
+            "text": "engine:db:get:micros",
+            "value": "engine:db:get:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:multiget:micros",
+            "value": "engine:db:multiget:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:write:micros",
+            "value": "engine:db:write:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:db:write:stall",
+            "value": "engine:db:write:stall"
+          },
+          {
+            "selected": true,
+            "text": "engine:number:per:multiget",
+            "value": "engine:number:per:multiget"
+          },
+          {
+            "selected": true,
+            "text": "engine:num:sst:read:per:level",
+            "value": "engine:num:sst:read:per:level"
+          },
+          {
+            "selected": true,
+            "text": "engine:switch:wal:nanos",
+            "value": "engine:switch:wal:nanos"
+          },
+          {
+            "selected": true,
+            "text": "engine:wal:file:sync:micros",
+            "value": "engine:wal:file:sync:micros"
+          },
+          {
+            "selected": true,
+            "text": "engine:write:wal:nanos",
+            "value": "engine:write:wal:nanos"
+          },
+          {
             "selected": false,
-            "text": "engine:bytes:per:multiget",
-            "value": "engine:bytes:per:multiget"
+            "text": "engine:table:open:io:micros",
+            "value": "engine:table:open:io:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:table:sync:micros",
+            "value": "engine:table:sync:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:sst:batch:size",
+            "value": "engine:sst:batch:size"
+          },
+          {
+            "selected": false,
+            "text": "engine:sst:read:micros",
+            "value": "engine:sst:read:micros"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtab:construct:nanos",
+            "value": "engine:memtab:construct:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:memtab:write:kv:nanos",
+            "value": "engine:memtab:write:kv:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:db:seek:micros",
+            "value": "engine:db:seek:micros"
           },
           {
             "selected": false,
             "text": "engine:cond:wait:nanos",
             "value": "engine:cond:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:mutex:wait:nanos",
+            "value": "engine:mutex:wait:nanos"
+          },
+          {
+            "selected": false,
+            "text": "engine:error:handler:autoresume:retry:count",
+            "value": "engine:error:handler:autoresume:retry:count"
+          },
+          {
+            "selected": false,
+            "text": "engine:manifest:file:sync:micros",
+            "value": "engine:manifest:file:sync:micros"
           },
           {
             "selected": false,
@@ -345,104 +444,9 @@
             "selected": false,
             "text": "engine:soft:rate:limit:delay:count",
             "value": "engine:soft:rate:limit:delay:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:get:micros",
-            "value": "engine:db:get:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:multiget:micros",
-            "value": "engine:db:multiget:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:seek:micros",
-            "value": "engine:db:seek:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:write:micros",
-            "value": "engine:db:write:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:db:write:stall",
-            "value": "engine:db:write:stall"
-          },
-          {
-            "selected": false,
-            "text": "engine:error:handler:autoresume:retry:count",
-            "value": "engine:error:handler:autoresume:retry:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:manifest:file:sync:micros",
-            "value": "engine:manifest:file:sync:micros"
-          },
-          {
-            "selected": true,
-            "text": "engine:memtab:construct:nanos",
-            "value": "engine:memtab:construct:nanos"
-          },
-          {
-            "selected": false,
-            "text": "engine:memtab:write:kv:nanos",
-            "value": "engine:memtab:write:kv:nanos"
-          },
-          {
-            "selected": false,
-            "text": "engine:mutex:wait:nanos",
-            "value": "engine:mutex:wait:nanos"
-          },
-          {
-            "selected": false,
-            "text": "engine:table:open:io:micros",
-            "value": "engine:table:open:io:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:table:sync:micros",
-            "value": "engine:table:sync:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:wal:file:sync:micros",
-            "value": "engine:wal:file:sync:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:write:wal:nanos",
-            "value": "engine:write:wal:nanos"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:sst:read:per:level",
-            "value": "engine:num:sst:read:per:level"
-          },
-          {
-            "selected": false,
-            "text": "engine:number:per:multiget",
-            "value": "engine:number:per:multiget"
-          },
-          {
-            "selected": false,
-            "text": "engine:sst:batch:size",
-            "value": "engine:sst:batch:size"
-          },
-          {
-            "selected": false,
-            "text": "engine:sst:read:micros",
-            "value": "engine:sst:read:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:switch:wal:nanos",
-            "value": "engine:switch:wal:nanos"
           }
         ],
-        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:num:files:stall:count,engine:soft:rate:limit:delay:count,engine:db:get:micros,engine:db:multiget:micros,engine:db:seek:micros,engine:db:write:micros,engine:db:write:stall,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:num:sst:read:per:level,engine:number:per:multiget,engine:sst:batch:size,engine:sst:read:micros,engine:switch:wal:nanos,engine:mutex:wait:nanos,engine:cond:wait:nanos,",
+        "query": "engine:bytes:per:multiget,engine:bytes:per:read,engine:bytes:per:write,engine:db:get:micros,engine:db:multiget:micros,engine:db:write:micros,engine:db:write:stall,engine:number:per:multiget,engine:num:sst:read:per:level,engine:switch:wal:nanos,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:sst:batch:size,engine:sst:read:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:db:seek:micros,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:num:files:stall:count,engine:soft:rate:limit:delay:count",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
