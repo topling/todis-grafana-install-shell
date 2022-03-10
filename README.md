@@ -14,7 +14,7 @@ tar xf download.tar.gz
 ```
 
 #### 安装
-cd install; 执行`sh install.sh`即可完成安装。
+cd install; 执行`bash install.sh`即可完成安装。
 
 配置内容在 config.sh，如下示例：
 ```
