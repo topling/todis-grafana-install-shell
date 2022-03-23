@@ -6,6 +6,8 @@ fi
 
 cur_path=$(cd $(dirname $0); pwd)
 
+sh ${cur_path}/todis-exporter/install_todis_exporter.sh
+
 sh ${cur_path}/prometheus/uninstall_prometheus.sh
 sh ${cur_path}/prometheus/install_prometheus.sh 
 
