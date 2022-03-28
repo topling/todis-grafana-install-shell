@@ -1,0 +1,11 @@
+[Unit]
+Description=redis_exporter
+Documentation=https://github.com/topling/todis_exporter/blob/todis-exporter/README.md
+After=network.target
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/usr/local/todis-exporter/todis_exporter --todis.addr "redis://localhost:8000" --web.listen-address ":9121" &
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

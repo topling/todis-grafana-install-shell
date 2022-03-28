@@ -81,6 +81,7 @@ function create_dashboard_to_list() {
 function customer_config() {
 	cp ${cur_path}/dashboard/dashboard-list-base.json ${cur_path}/dashboard/dashboard-list.json
 
+	create_dashboard_to_list todis-exporter.json "todis-exporter-url"
 	create_dashboard_to_list properties-all.json "properties-all-url"
 	create_dashboard_to_list properties-cfstat.json "properties-cfstat-url"
 	create_dashboard_to_list properties-common.json "properties-common-url"
