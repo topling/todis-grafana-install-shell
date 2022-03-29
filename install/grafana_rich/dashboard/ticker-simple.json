@@ -247,11 +247,6 @@
           },
           {
             "selected": false,
-            "text": "engine:bloom:filter:micros",
-            "value": "engine:bloom:filter:micros"
-          },
-          {
-            "selected": false,
             "text": "engine:memtable:hit",
             "value": "engine:memtable:hit"
           },
@@ -366,11 +361,6 @@
             "value": "engine:db:iter:bytes:read"
           },
           {
-            "selected": false,
-            "text": "engine:no:file:closes",
-            "value": "engine:no:file:closes"
-          },
-          {
             "selected": true,
             "text": "engine:no:file:opens",
             "value": "engine:no:file:opens"
@@ -379,21 +369,6 @@
             "selected": false,
             "text": "engine:no:file:errors",
             "value": "engine:no:file:errors"
-          },
-          {
-            "selected": false,
-            "text": "engine:l0:slowdown:micros",
-            "value": "engine:l0:slowdown:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:memtable:compaction:micros",
-            "value": "engine:memtable:compaction:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:l0:num:files:stall:micros",
-            "value": "engine:l0:num:files:stall:micros"
           },
           {
             "selected": true,
@@ -412,16 +387,6 @@
           },
           {
             "selected": false,
-            "text": "engine:rate:limit:delay:millis",
-            "value": "engine:rate:limit:delay:millis"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:iterators",
-            "value": "engine:num:iterators"
-          },
-          {
-            "selected": false,
             "text": "engine:number:multiget:get",
             "value": "engine:number:multiget:get"
           },
@@ -434,11 +399,6 @@
             "selected": false,
             "text": "engine:number:multiget:bytes:read",
             "value": "engine:number:multiget:bytes:read"
-          },
-          {
-            "selected": false,
-            "text": "engine:number:deletes:filtered",
-            "value": "engine:number:deletes:filtered"
           },
           {
             "selected": false,
@@ -469,11 +429,6 @@
             "selected": false,
             "text": "engine:wal:synced",
             "value": "engine:wal:synced"
-          },
-          {
-            "selected": false,
-            "text": "engine:write:timeout",
-            "value": "engine:write:timeout"
           },
           {
             "selected": false,
@@ -672,7 +627,7 @@
             "value": "engine:superversion_releases"
           }
         ],
-        "query": "engine:bloom:filter:useful,engine:bloom:filter:full:positive,engine:bloom:filter:full:true:positive,engine:bloom:filter:micros,engine:memtable:hit,engine:memtable:miss,engine:l0:hit,engine:l1:hit,engine:l2andup:hit,engine:compaction:key:drop:new,engine:compaction:key:drop:obsolete,engine:compaction:key:drop:range_del,engine:compaction:key:drop:user,engine:compaction:range_del:drop:obsolete,engine:compaction:optimized:del:drop:obsolete,engine:compaction:cancelled,engine:number:keys:written,engine:number:keys:read,engine:number:keys:updated,engine:bytes:read,engine:number:db:seek,engine:number:db:next,engine:number:db:prev,engine:number:db:seek:found,engine:number:db:next:found,engine:number:db:prev:found,engine:db:iter:bytes:read,engine:no:file:closes,engine:no:file:opens,engine:no:file:errors,engine:l0:slowdown:micros,engine:memtable:compaction:micros,engine:l0:num:files:stall:micros,engine:stall:micros,engine:db:cond:wait:nanos,engine:db:mutex:wait:nanos,engine:rate:limit:delay:millis,engine:num:iterators,engine:number:multiget:get,engine:number:multiget:keys:read,engine:number:multiget:bytes:read,engine:number:deletes:filtered,engine:number:merge:failures,engine:bloom:filter:prefix:checked,engine:bloom:filter:prefix:useful,engine:number:reseeks:iteration,engine:getupdatessince:calls,engine:wal:synced,engine:write:timeout,engine:compact:read:marked:bytes,engine:compact:read:periodic:bytes,engine:compact:read:ttl:bytes,engine:compact:write:marked:bytes,engine:compact:write:periodic:bytes,engine:compact:write:ttl:bytes,engine:number:direct:load:table:properties,engine:merge:operation:time:nanos,engine:filter:operation:time:nanos,engine:read:amp:estimate:useful:bytes,engine:read:amp:total:read:bytes,engine:number:rate_limiter:drains,engine:number:iter:skip,engine:number:multiget:keys:found,engine:num:iterator:created,engine:num:iterator:deleted,engine:files:marked:trash,engine:files:deleted:immediately,engine:error:handler:bg:errro:count,engine:error:handler:bg:io:errro:count,engine:error:handler:bg:retryable:io:errro:count,engine:error:handler:autoresume:count,engine:error:handler:autoresume:retry:total:count,engine:error:handler:autoresume:success:count,engine:bytes:written,engine:wal:bytes,engine:flush:write:bytes,engine:write:self,engine:write:other,engine:write:wal,engine:compact:read:bytes,engine:compact:write:bytes,engine:lcompact:write:bytes:raw,engine:dcompact:write:bytes:raw,engine:remote:compact:read:bytes,engine:remote:compact:write:bytes,engine:superversion_acquires,engine:superversion_cleanups,engine:superversion_releases,",
+        "query": "engine:bloom:filter:useful,engine:bloom:filter:full:positive,engine:bloom:filter:full:true:positive,engine:memtable:hit,engine:memtable:miss,engine:l0:hit,engine:l1:hit,engine:l2andup:hit,engine:compaction:key:drop:new,engine:compaction:key:drop:obsolete,engine:compaction:key:drop:range_del,engine:compaction:key:drop:user,engine:compaction:range_del:drop:obsolete,engine:compaction:optimized:del:drop:obsolete,engine:compaction:cancelled,engine:number:keys:written,engine:number:keys:read,engine:number:keys:updated,engine:bytes:read,engine:number:db:seek,engine:number:db:next,engine:number:db:prev,engine:number:db:seek:found,engine:number:db:next:found,engine:number:db:prev:found,engine:db:iter:bytes:read,engine:no:file:opens,engine:no:file:errors,engine:stall:micros,engine:db:cond:wait:nanos,engine:db:mutex:wait:nanos,engine:number:multiget:get,engine:number:multiget:keys:read,engine:number:multiget:bytes:read,engine:number:merge:failures,engine:bloom:filter:prefix:checked,engine:bloom:filter:prefix:useful,engine:number:reseeks:iteration,engine:getupdatessince:calls,engine:wal:synced,engine:compact:read:marked:bytes,engine:compact:read:periodic:bytes,engine:compact:read:ttl:bytes,engine:compact:write:marked:bytes,engine:compact:write:periodic:bytes,engine:compact:write:ttl:bytes,engine:number:direct:load:table:properties,engine:merge:operation:time:nanos,engine:filter:operation:time:nanos,engine:read:amp:estimate:useful:bytes,engine:read:amp:total:read:bytes,engine:number:rate_limiter:drains,engine:number:iter:skip,engine:number:multiget:keys:found,engine:num:iterator:created,engine:num:iterator:deleted,engine:files:marked:trash,engine:files:deleted:immediately,engine:error:handler:bg:errro:count,engine:error:handler:bg:io:errro:count,engine:error:handler:bg:retryable:io:errro:count,engine:error:handler:autoresume:count,engine:error:handler:autoresume:retry:total:count,engine:error:handler:autoresume:success:count,engine:bytes:written,engine:wal:bytes,engine:flush:write:bytes,engine:write:self,engine:write:other,engine:write:wal,engine:compact:read:bytes,engine:compact:write:bytes,engine:lcompact:write:bytes:raw,engine:dcompact:write:bytes:raw,engine:remote:compact:read:bytes,engine:remote:compact:write:bytes,engine:superversion_acquires,engine:superversion_cleanups,engine:superversion_releases,",
         "queryValue": "error:handler:bg",
         "skipUrlSync": false,
         "type": "custom"

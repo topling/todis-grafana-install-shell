@@ -351,11 +351,6 @@
           },
           {
             "selected": false,
-            "text": "engine:memtable:compaction:count",
-            "value": "engine:memtable:compaction:count"
-          },
-          {
-            "selected": false,
             "text": "engine:numfiles:in:singlecompaction",
             "value": "engine:numfiles:in:singlecompaction"
           },
@@ -370,7 +365,7 @@
             "value": "engine:subcompaction:setup:times:micros"
           }
         ],
-        "query": "engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:db:flush:micros,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:memtable:compaction:count,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,engine:subcompaction:setup:times:micros",
+        "query": "engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:db:flush:micros,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,engine:subcompaction:setup:times:micros",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"

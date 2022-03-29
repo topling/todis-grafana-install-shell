@@ -515,34 +515,9 @@
             "selected": false,
             "text": "engine:read:zbs:record:micros",
             "value": "engine:read:zbs:record:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:hard:rate:limit:delay:count",
-            "value": "engine:hard:rate:limit:delay:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:l0:slowdown:count",
-            "value": "engine:l0:slowdown:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:memtable:compaction:count",
-            "value": "engine:memtable:compaction:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:files:stall:count",
-            "value": "engine:num:files:stall:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:soft:rate:limit:delay:count",
-            "value": "engine:soft:rate:limit:delay:count"
           }
         ],
-        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:number:per:multiget,engine:db:get:micros,engine:db:write:micros,engine:db:write:stall,engine:db:multiget:micros,engine:db:flush:micros,engine:db:seek:micros,engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:switch:wal:nanos,engine:sst:batch:size,engine:sst:read:micros,engine:num:sst:read:per:level,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:read:zbs:record:micros,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:memtable:compaction:count,engine:num:files:stall:count,engine:soft:rate:limit:delay:count,",
+        "query": "engine:bytes:per:read,engine:bytes:per:write,engine:bytes:per:multiget,engine:number:per:multiget,engine:db:get:micros,engine:db:write:micros,engine:db:write:stall,engine:db:multiget:micros,engine:db:flush:micros,engine:db:seek:micros,engine:compaction:outfile:sync:micros,engine:compaction:times:cpu_micros,engine:compaction:times:micros,engine:subcompaction:setup:times:micros,engine:numfiles:in:singlecompaction,engine:num:subcompactions:scheduled,engine:dcompaction:input:raw:bytes,engine:dcompaction:input:zip:bytes,engine:dcompaction:output:file:raw:size,engine:dcompaction:output:file:zip:size,engine:lcompaction:input:raw:bytes,engine:lcompaction:input:zip:bytes,engine:lcompaction:output:file:raw:size,engine:lcompaction:output:file:zip:size,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:switch:wal:nanos,engine:sst:batch:size,engine:sst:read:micros,engine:num:sst:read:per:level,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:read:zbs:record:micros,",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"

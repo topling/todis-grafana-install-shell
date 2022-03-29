@@ -424,29 +424,9 @@
             "selected": false,
             "text": "engine:manifest:file:sync:micros",
             "value": "engine:manifest:file:sync:micros"
-          },
-          {
-            "selected": false,
-            "text": "engine:hard:rate:limit:delay:count",
-            "value": "engine:hard:rate:limit:delay:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:l0:slowdown:count",
-            "value": "engine:l0:slowdown:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:num:files:stall:count",
-            "value": "engine:num:files:stall:count"
-          },
-          {
-            "selected": false,
-            "text": "engine:soft:rate:limit:delay:count",
-            "value": "engine:soft:rate:limit:delay:count"
           }
         ],
-        "query": "engine:bytes:per:multiget,engine:bytes:per:read,engine:bytes:per:write,engine:db:get:micros,engine:db:multiget:micros,engine:db:write:micros,engine:db:write:stall,engine:number:per:multiget,engine:num:sst:read:per:level,engine:switch:wal:nanos,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:sst:batch:size,engine:sst:read:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:db:seek:micros,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,engine:hard:rate:limit:delay:count,engine:l0:slowdown:count,engine:num:files:stall:count,engine:soft:rate:limit:delay:count",
+        "query": "engine:bytes:per:multiget,engine:bytes:per:read,engine:bytes:per:write,engine:db:get:micros,engine:db:multiget:micros,engine:db:write:micros,engine:db:write:stall,engine:number:per:multiget,engine:num:sst:read:per:level,engine:switch:wal:nanos,engine:wal:file:sync:micros,engine:write:wal:nanos,engine:table:open:io:micros,engine:table:sync:micros,engine:sst:batch:size,engine:sst:read:micros,engine:memtab:construct:nanos,engine:memtab:write:kv:nanos,engine:db:seek:micros,engine:cond:wait:nanos,engine:mutex:wait:nanos,engine:error:handler:autoresume:retry:count,engine:manifest:file:sync:micros,",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
