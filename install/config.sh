@@ -14,6 +14,17 @@ function server_config() {
     grafana_port=3000
 }
 
+function dell2_todis_config() {
+    #server config
+    todis_host=192.168.31.2
+    todis_port=55101
+    prometheus_port=55103
+    prometheus_listen_port=10003
+    prometheus_host=192.168.31.2
+    grafana_host=localhost
+    grafana_port=10004
+}
+
 function local_config() {
     #local docker config
     todis_host=192.168.31.3
@@ -84,7 +95,8 @@ function check_user() {
 #grafana_install_config
 #toplingdb_config
 #dell1_config
-oauth_config
+#oauth_config
+dell2_todis_config
 
 todis_host_port=${todis_host}:${todis_port}
 prometheus_host_port=${prometheus_host}:${prometheus_port}
