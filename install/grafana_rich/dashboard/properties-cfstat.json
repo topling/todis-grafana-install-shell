@@ -351,18 +351,18 @@
           "mode": "multi"
         }
       },
-      "repeat": "io_stalls",
+      "repeat": "stalls",
       "repeatDirection": "h",
       "targets": [
         {
           "exemplar": true,
-          "expr": "engine:cfstats{job=$data_type, flag=\"io_stalls:$io_stalls\"}",
+          "expr": "engine:cfstats{job=$data_type, flag=\"$stalls\"}",
           "interval": "",
           "legendFormat": "{{flag}}",
           "refId": "A"
         }
       ],
-      "title": "cfstat io_stalls $io_stalls",
+      "title": "cfstat stalls $stalls",
       "type": "timeseries"
     }
   ],
@@ -618,9 +618,9 @@
         "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": "io_stalls",
+        "label": "stalls",
         "multi": true,
-        "name": "io_stalls",
+        "name": "stalls",
         "options": [
           {
             "selected": true,
@@ -629,56 +629,56 @@
           },
           {
             "selected": false,
-            "text": "level0_numfiles",
-            "value": "level0_numfiles"
+            "text": "cf_l0_file_count_limit_delays_with_ongoing_compaction",
+            "value": "cf_l0_file_count_limit_delays_with_ongoing_compaction"
           },
           {
             "selected": false,
-            "text": "level0_numfiles_with_compaction",
-            "value": "level0_numfiles_with_compaction"
+            "text": "cf_l0_file_count_limit_stops_with_ongoing_compaction",
+            "value": "cf_l0_file_count_limit_stops_with_ongoing_compaction"
           },
           {
             "selected": false,
-            "text": "level0_slowdown",
-            "value": "level0_slowdown"
+            "text": "l0_file_count_limit_delays",
+            "value": "l0_file_count_limit_delays"
           },
           {
             "selected": false,
-            "text": "level0_slowdown_with_compaction",
-            "value": "level0_slowdown_with_compaction"
+            "text": "l0_file_count_limit_stops",
+            "value": "l0_file_count_limit_stops"
           },
           {
             "selected": false,
-            "text": "memtable_compaction",
-            "value": "memtable_compaction"
+            "text": "memtable_limit_delays",
+            "value": "memtable_limit_delays"
           },
           {
             "selected": false,
-            "text": "memtable_slowdown",
-            "value": "memtable_slowdown"
+            "text": "memtable_limit_stops",
+            "value": "memtable_limit_stops"
           },
           {
             "selected": false,
-            "text": "slowdown_for_pending_compaction_bytes",
-            "value": "slowdown_for_pending_compaction_bytes"
+            "text": "pending_compaction_bytes_delays",
+            "value": "pending_compaction_bytes_delays"
           },
           {
             "selected": false,
-            "text": "stop_for_pending_compaction_bytes",
-            "value": "stop_for_pending_compaction_bytes"
+            "text": "pending_compaction_bytes_stops",
+            "value": "pending_compaction_bytes_stops"
           },
           {
             "selected": false,
-            "text": "total_slowdown",
-            "value": "total_slowdown"
+            "text": "total_delays",
+            "value": "total_delays"
           },
           {
             "selected": false,
-            "text": "total_stop",
-            "value": "total_stop"
+            "text": "total_stops",
+            "value": "total_stops"
           }
         ],
-        "query": "level0_numfiles,level0_numfiles_with_compaction,level0_slowdown,level0_slowdown_with_compaction,memtable_compaction,memtable_slowdown,slowdown_for_pending_compaction_bytes,stop_for_pending_compaction_bytes,total_slowdown,total_stop,",
+        "query": "cf_l0_file_count_limit_delays_with_ongoing_compaction,cf_l0_file_count_limit_stops_with_ongoing_compaction,l0_file_count_limit_delays,l0_file_count_limit_stops,memtable_limit_delays,memtable_limit_stops,pending_compaction_bytes_delays,pending_compaction_bytes_stops,total_delays,total_stops,",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
